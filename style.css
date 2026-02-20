@@ -2,3 +2,11 @@ body {
     align-items: center;
     justify-items: center;
 }
+
+.level-info {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+    align-items: center;
+    justify-items: center;
+}
