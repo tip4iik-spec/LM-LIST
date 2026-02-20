@@ -4,7 +4,7 @@ test_img_el.src = "./Crimson_Planet.png";
 document.body.appendChild(test_img_el);
 
 
-container = document.getElementById("container-for-tamplates");
+container = document.getElementById("container-for-templates");
 temp = document.getElementById("test-template");
 
 temp_clone = temp.content.cloneNode(true);
