@@ -15,7 +15,8 @@ name_el = temp_clone.querySelector(".item-title");
 name_el.textContent = "Crimson Planet";
 
 desk_el = temp_clone.querySelector(".item-description");
-desk_el.textContent = "тест 1";
+desk_el.textContent = "тест 2";
 
 container.appendChild(temp_clone);
+
 
