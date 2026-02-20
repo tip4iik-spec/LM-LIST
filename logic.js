@@ -9,10 +9,10 @@ temp = document.getElementById("test-template");
 
 temp_clone = temp.content.cloneNode(true);
 
-temp_clone.querySelector(".test").textContent = "Hello world";
-
 img_el = temp_clone.querySelector(".image-div");
-img_el.src = "./Crimson_Planet.png";
+temp_image = document.createElement('img');
+temp_image.src = "./Crimson_Planet.png";
+img_el.appendChild(temp_image);
 
 name_el = temp_clone.querySelector(".name");
 name_el.textContent = "Crimson Planet";
