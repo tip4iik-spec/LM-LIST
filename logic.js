@@ -15,6 +15,6 @@ name_el = temp_clone.querySelector(".item-title");
 name_el.textContent = "Crimson Planet";
 
 desk_el = temp_clone.querySelector(".item-description");
-desk_el.textContent = "A planet with a crimson hue, known for its unique atmosphere and mysterious landscapes.";
+desk_el.textContent = "ХАХАХХАХА";
 
 container.appendChild(temp_clone);
