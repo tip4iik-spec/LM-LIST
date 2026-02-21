@@ -1,39 +1,65 @@
 body {
-    align-items: center;
-    justify-items: center;
+    display: flex;
+    flex-direction: column; /* Элементы внутри body идут сверху вниз */
+    justify-content: center; /* Центрируем по вертикали (т.к. column) */
+    align-items: center; /* Центрируем по горизонтали */
+    
+    min-height: 100vh; /* ВАЖНО: Растягиваем body на всю высоту экрана! */
+    margin: 0; /* Убираем стандартные отступы браузера, чтобы не было лишнего скролла */
+}
+
+/* 2. Настраиваем контейнер, в который JS добавляет элементы */
+#templates-container {
+    display: flex;
+    flex-direction: column; /* Выстраиваем 5 ваших блоков в колонку друг под другом */
+    align-items: center; /* Центрируем блоки внутри контейнера */
+    
+    width: 100%; /* Позволяет контейнеру не уезжать за края экрана */
+    padding: 20px 0; /* Отступы сверху и снизу, чтобы первый блок не прилипал к верху экрана при скролле */
 }
 
 .level-info {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    padding: 40px;
-    border : 3px solid rgb(0, 0, 0);
+    align-items: start;
+    justify-items: left;
+    padding: 15px;
+    gap: 40px;
+    /*border : 3px solid rgb(0, 0, 0);*/
 
-    width: 1500px;
-    min-width: 1500px; 
-    max-width: 1500px; 
+    width: 700px;
+    min-width: 700px; 
+    max-width: 700px; 
 
-    height: 200px;
-    min-height: 200px;
-    max-height: 200px;
+    height: 160px;
+    min-height: 160px;
+    max-height: 160px;
 }
 
 .text {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: left;
 }
 
 .item-image img {
   display: block;
   width: 100%;
   height: auto;
-  max-width: 160px;     /* или другой размер по желанию */
-  max-height: 200px;    /* опционально */
+  max-width: 310px;     /* или другой размер по желанию */
+  max-height: 310px;    /* опционально */
+  min-width: 310px;
+  max-height: 310px;
   object-fit: cover;    /* или contain, если нужно целиком видеть картинку */
-
 }
 
+.item-level-victors {
+    white-space: pre-wrap; /* Сохраняет переносы строк и пробелы, переносит текст, если он не влезает в блок */
+}
 
+.item-tittle, .item-level-victors{
+    overflow-wrap: break-word;
+}
+
+.text h1, .text h4 { margin: 8px; }
