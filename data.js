@@ -144,7 +144,7 @@ const players = [
       "Shitty CBO (101456002)", "Ya Russki", "shitty silent imposibl gromitb", 
       "Molten Core", "Hyper Paradox", "Femboy Fantasy", "Amir Proshel Kocmik", 
       "phonk town🤮", "Betelgeuse", "Viridian", "Reverence", "Shitty Acheron (89774876)", 
-      "surveillant", "Disruption", "Churka Circles (87013239)", "Blurred Face", "Terraphobia", 
+      "Surveillant", "Disruption", "Churka Circles (87013239)", "Blurred Face", "Terraphobia", 
       "Sharp Minor", "Poltergeist"
     ],
     "completed": [

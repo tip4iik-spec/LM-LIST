@@ -95,7 +95,93 @@ document.addEventListener("DOMContentLoaded", () => {
             container.appendChild(temp_clone)
         })
     }
+    else if (pageName == "players_list_by_score_10_percent_formula"){
+        // players_list_by_score_10_percent_formula - топ, основанный на очках, которые игрок набрал бы по формуле 1 (100.000 * 0.9^(Позиция_лвла - 1))
+        // Для начала получим массив: [{"player" : ... , "levels": [{"level": ... , "pos": ...}]}]
+        // При этом пусть в levels все уровни будут рассротированны по сложности
+        let players_and_their_complete_levels = []
+        // Пройдемся по каждому игроку
+        for (player_i = 0; player_i < players.length ; player_i++){
+            let temp_player_levels = []
+            // И по каждому уровню, который игрок прошел
+            let all_player_completed_levels = players[player_i].completed.concat(players[player_i].verified)
+            for (player_level_i = 0; player_level_i < all_player_completed_levels.length ; player_level_i++){
+                // Перебрав все уровни топа, найдем сложность каждого пройденного уровня
+                for (level_in_list_i = 0; level_in_list_i < levels.length ;level_in_list_i++){
+                    if (levels[level_in_list_i].name == all_player_completed_levels[player_level_i]){
+                        temp_player_levels.push({"level": levels[level_in_list_i].name, "pos": level_in_list_i+1})
+                    }
+                }
+            }
 
+            temp_player_levels.sort((a, b) => a.pos - b.pos); // Теперь получен levels для players_and_their_complete_levels, сортированный по сложности уровней
+
+            players_and_their_complete_levels.push({"name": players[player_i].name, levels: temp_player_levels})
+            // Добавляем игрока в итоговый массив, и переходим к следующему
+        }
+        // Здесь у нас есть готовый players_and_their_complete_levels
+
+        // Расчитаем очки по формуле 1 для каждого игрока:
+
+        for (i = 0; i < players_and_their_complete_levels.length ; i++){
+            let score = 0
+            for (j = 0; j < players_and_their_complete_levels[i].levels.length ; j++){
+                score += 100000 * Math.pow(0.9, players_and_their_complete_levels[i].levels[j].pos - 1)
+            }
+            players_and_their_complete_levels[i].score = score
+        }
+        // Отсортируем игроков по очкам (по убыванию)
+        // При одинаковых очках, игроки могут располагаться в любом порядке
+        players_and_their_complete_levels.sort((a, b) => b.score - a.score)
+        // Получим пройденные из main, extended и beyond листов уровни
+        for (i = 0; i < players_and_their_complete_levels.length; i++){
+            for (j = 0; j < players_and_their_complete_levels[i].levels.length; j++){
+                players_and_their_complete_levels[i].main ??= []
+                players_and_their_complete_levels[i].extended ??= []
+                players_and_their_complete_levels[i].beyond ??= []
+                
+                let currentLevel = players_and_their_complete_levels[i].levels[j];
+
+                if (currentLevel.pos <= 50){
+                    players_and_their_complete_levels[i].main.push(currentLevel.level) 
+                }
+                else if (currentLevel.pos <= 100){
+                    players_and_their_complete_levels[i].extended.push(currentLevel.level) 
+                }
+                else if (currentLevel.pos <= 150){
+                    players_and_their_complete_levels[i].beyond.push(currentLevel.level) 
+                }
+            }
+        }
+
+        players_and_their_complete_levels.forEach(player =>{
+            let temp_clone = temp.content.cloneNode(true);
+            let player_name_el = temp_clone.querySelector(".player-name");
+            player_name_el.textContent = player.name + " - " + player.score.toFixed(1)
+            player_name_el.id = player.name
+
+            let player_hardest_el = temp_clone.querySelector(".player-hardest-level");
+            player_hardest_el.textContent = player.levels[0].level
+
+            let player_main_levels_el = temp_clone.querySelector(".player-main-list-completed-levels");
+            let player_extended_levels_el = temp_clone.querySelector(".player-extended-list-completed-levels");
+            let player_beyond_levels_el = temp_clone.querySelector(".player-beyond-list-completed-levels");
+            if (player.main.length > 0){
+            player_main_levels_el.textContent = player.main.join(", ")
+            }
+            if (player.extended.length > 0){
+            player_extended_levels_el.textContent = player.extended.join(", ")
+            }
+            if (player.beyond.length > 0){
+                player_beyond_levels_el.textContent = player.beyond.join(", ")
+            }
+            let more_info_div_el = temp_clone.querySelector(".more-info-about-player");
+            more_info_div_el.id = player.name + "-info"
+            container.appendChild(temp_clone)
+        })
+
+
+    }
 
 
     // В конце концов, добавим показ дополнительной информации
