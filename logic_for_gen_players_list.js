@@ -46,6 +46,28 @@ document.addEventListener("DOMContentLoaded", () => {
         // Абсолютно все равно на то, кто будет выше/ниже при одинаковом SA
 
         players_and_their_complete_levels.sort((a,b) => a.SA - b.SA)
+
+
+        // Получим пройденные из main, extended и beyond листов уровни:
+        for (i = 0; i < players_and_their_complete_levels.length; i++){
+            for (j = 0; j < players_and_their_complete_levels[i].levels.length; j++){
+                players_and_their_complete_levels[i].main ??= []
+                players_and_their_complete_levels[i].extended ??= []
+                players_and_their_complete_levels[i].beyond ??= []
+                
+                let currentLevel = players_and_their_complete_levels[i].levels[j];
+
+                if (currentLevel.pos <= 50){
+                    players_and_their_complete_levels[i].main.push(currentLevel.level) // ИСПРАВЛЕНО: .level вместо .name
+                }
+                else if (currentLevel.pos <= 100){
+                    players_and_their_complete_levels[i].extended.push(currentLevel.level) // ИСПРАВЛЕНО: .level вместо .name
+                }
+                else if (currentLevel.pos <= 150){
+                    players_and_their_complete_levels[i].beyond.push(currentLevel.level) // ИСПРАВЛЕНО: .level вместо .name
+                }
+            }
+        }
         
         players_and_their_complete_levels.forEach(player =>{
             let temp_clone = temp.content.cloneNode(true);
@@ -56,13 +78,18 @@ document.addEventListener("DOMContentLoaded", () => {
             let player_hardest_el = temp_clone.querySelector(".player-hardest-level");
             player_hardest_el.textContent = player.levels[0].level
 
-            let player_completed_levels_el = temp_clone.querySelector(".player-completed-levels");
-            let only_levels_array = []
-            for (i = 0; i < player.levels.length; i++){
-                only_levels_array.push(player.levels[i].level)
+            let player_main_levels_el = temp_clone.querySelector(".player-main-list-completed-levels");
+            let player_extended_levels_el = temp_clone.querySelector(".player-extended-list-completed-levels");
+            let player_beyond_levels_el = temp_clone.querySelector(".player-beyond-list-completed-levels");
+            if (player.main.length > 0){
+            player_main_levels_el.textContent = player.main.join(", ")
             }
-            player_completed_levels_el.textContent = only_levels_array.join(", ")
-
+            if (player.extended.length > 0){
+            player_extended_levels_el.textContent = player.extended.join(", ")
+            }
+            if (player.beyond.length > 0){
+                player_beyond_levels_el.textContent = player.beyond.join(", ")
+            }
             let more_info_div_el = temp_clone.querySelector(".more-info-about-player");
             more_info_div_el.id = player.name + "-info"
             container.appendChild(temp_clone)

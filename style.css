@@ -95,8 +95,15 @@ a {
     justify-content: center;
     align-items: center;
     max-width: 1000px;
-    text-align: center
+    text-align: center;
+    background-color: rgb(240, 240, 240);
 }
 .player-info{
     text-align: center
+}
+
+hr{
+    size: 230px;
+    min-width: 230px;
+    max-width: 230px;
 }
