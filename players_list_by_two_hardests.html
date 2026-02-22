@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     
-    <script src="logic_for_gen_lists.js" defer></script>
     <script src="data.js"></script>
+    <script src="logic_for_gen_players_list.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,18 +17,20 @@
     <a href="players_list_by_two_hardests.html">Players list</a>
     </div>
     
-
-
     <div id="templates-container"></div>
 
-    <template id="item-template">
-        <div class="level-info">
-            <div class="item-image"></div>
-            <div class="text">  
-                <h1 class="item-title"></h1>
-                <h4 class="item-level-victors"></h4>
+    <template id="player-template">
+        <div class="player-info">
+            <h1 class="player-name"></h1>
+            <hr> 
+            <div class="more-info-about-player">
+                <h2>hardest level: </h2>
+                <p class="player-hardest-level"></p>
+                <h3>Completed levels: </h3>
+                <p class="player-completed-levels"></p>
             </div>
         </div>
     </template>
+    
 </body>
 </html>

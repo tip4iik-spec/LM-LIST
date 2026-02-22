@@ -32,9 +32,38 @@ document.addEventListener("DOMContentLoaded", () => {
         name_el.textContent = "№" + (levels.indexOf(level) + 1) + " - " + level.name;
 
         desk_el = temp_clone.querySelector(".item-level-victors");
-        let s = "Первопроходец: " + level.verifer;
-        if (level.victors != "") {
-            s += "\n\nОстальные: " + level.victors;
+        // Получаем первопроходца
+        level_verifier = "Нет данных";
+        for (i = 0; i < players.length; i++){ // Проходимся по каждому игроку
+            for (j = 0; j < players[i].verified.length; j++) // И по каждому уровню, который он прошёл
+            {
+                if (players[i].verified[j] == level.name) // Если уровень совпал с нашим
+                {
+                    level_verifier = players[i].name; // Записываем имя первопроходца
+                    break; // Выходим из цикла, так как первопроходец найден
+                }
+            }
+        }
+
+
+        let s = "Первопроходец: " + level_verifier;
+
+        level_victors = [];
+
+        for (i = 0; i < players.length; i++){ // Проходимся по каждому игроку
+            for (j = 0; j < players[i].completed.length; j++){
+                if (players[i].completed[j] == level.name) // Если уровень совпал с нашим
+                {
+                    level_victors.push(players[i].name);
+                }
+
+            } // И по каждому уровню, который он прошёл
+        }
+
+
+
+        if (level_victors.length > 0) {
+            s += "\n\nОстальные: " + level_victors.join(", ");
         }
         desk_el.textContent = s;
 

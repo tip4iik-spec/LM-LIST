@@ -63,3 +63,40 @@ body {
 }
 
 .text h1, .text h4 { margin: 8px; }
+
+.lists-panel{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background: #2b2a2a;
+    width: 100%;
+    height: 50px;
+    color: rgb(255, 255, 255);
+}
+
+body > :first-child {
+    margin-top: 0px; /* Отступ сверху для первого элемента внутри body */
+}
+
+a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.more-info-about-player{
+    display: none;
+}
+
+.more-info-about-player{
+    flex-direction: column;
+    color:rgb(0, 0, 0);
+    justify-content: center;
+    align-items: center;
+    max-width: 1000px;
+    text-align: center
+}
+.player-info{
+    text-align: center
+}
