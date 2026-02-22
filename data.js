@@ -225,5 +225,4 @@ const players = [
     ],
     "completed": []
   }
-
 ];
