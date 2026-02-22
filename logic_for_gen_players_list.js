@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
         for (i = 0; i < players_and_their_complete_levels.length ; i++){
             let score = 0
             for (j = 0; j < players_and_their_complete_levels[i].levels.length ; j++){
-                score += 100000 * Math.pow(0.9, players_and_their_complete_levels[i].levels[j].pos - 1)
+                score += 10000 * Math.pow(0.95, players_and_their_complete_levels[i].levels[j].pos - 1)
             }
             players_and_their_complete_levels[i].score = score
         }
