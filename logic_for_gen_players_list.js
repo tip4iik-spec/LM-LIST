@@ -58,13 +58,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 let currentLevel = players_and_their_complete_levels[i].levels[j];
 
                 if (currentLevel.pos <= 50){
-                    players_and_their_complete_levels[i].main.push(currentLevel.level) // ИСПРАВЛЕНО: .level вместо .name
+                    players_and_their_complete_levels[i].main.push(currentLevel.level) 
                 }
                 else if (currentLevel.pos <= 100){
-                    players_and_their_complete_levels[i].extended.push(currentLevel.level) // ИСПРАВЛЕНО: .level вместо .name
+                    players_and_their_complete_levels[i].extended.push(currentLevel.level) 
                 }
                 else if (currentLevel.pos <= 150){
-                    players_and_their_complete_levels[i].beyond.push(currentLevel.level) // ИСПРАВЛЕНО: .level вместо .name
+                    players_and_their_complete_levels[i].beyond.push(currentLevel.level) 
                 }
             }
         }
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
         players_and_their_complete_levels.forEach(player =>{
             let temp_clone = temp.content.cloneNode(true);
             let player_name_el = temp_clone.querySelector(".player-name");
-            player_name_el.textContent = player.name
+            player_name_el.textContent = player.name + " - " + player.SA
             player_name_el.id = player.name
 
             let player_hardest_el = temp_clone.querySelector(".player-hardest-level");

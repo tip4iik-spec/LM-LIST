@@ -6,6 +6,11 @@ body {
     
     min-height: 100vh; /* ВАЖНО: Растягиваем body на всю высоту экрана! */
     margin: 0; /* Убираем стандартные отступы браузера, чтобы не было лишнего скролла */
+
+    background-image: url('bg_for_player_top.png'); 
+    background-size: cover; /* Растагивает на весь экран */
+    background-position: center;           /* Централизация */
+    background-attachment: fixed;        
 }
 
 /* 2. Настраиваем контейнер, в который JS добавляет элементы */
@@ -76,13 +81,23 @@ body {
     color: rgb(255, 255, 255);
 }
 
+.formulas-panel{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    background: #2b2a2a;
+    color: rgb(255, 255, 255);
+}
+
 body > :first-child {
     margin-top: 0px; /* Отступ сверху для первого элемента внутри body */
 }
 
 a {
     text-decoration: none;
-    color: rgb(255, 255, 255);
 }
 
 .more-info-about-player{
@@ -106,4 +121,29 @@ hr{
     size: 230px;
     min-width: 230px;
     max-width: 230px;
+}
+
+.formulas-links{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+lists-panel a, 
+.lists-panel a:visited {
+    color: white;
+}
+
+.formulas-links a, 
+.formulas-links a:visited {
+    color: white;
+}
+
+#main-div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Чтобы контент внутри (карточки) остался по центру */
 }
