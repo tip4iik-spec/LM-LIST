@@ -44,6 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
         // Абсолютно все равно на то, кто будет выше/ниже при одинаковом SA
+
+        players_and_their_complete_levels.sort((a,b) => a.SA - b.SA)
         
         players_and_their_complete_levels.forEach(player =>{
             let temp_clone = temp.content.cloneNode(true);
