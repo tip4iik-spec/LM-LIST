@@ -44,7 +44,7 @@ const levels = [
   { "name": "Plasma Pulse III" },
   { "name": "Shitty Acheron (89774876)" },
   { "name": "SUBVERSIVE" },
-  { "name": "surveillant" },
+  { "name": "Surveillant" },
   { "name": "Aftermath" },
   { "name": "Retention" },
   { "name": "ILOVECYAN" },
@@ -225,4 +225,5 @@ const players = [
     ],
     "completed": []
   }
+
 ];
