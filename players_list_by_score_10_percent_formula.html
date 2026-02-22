@@ -17,7 +17,6 @@
     <a href="players_list_by_two_hardests.html">Players ranking</a>
     </div>
     
-    <div id="templates-container"></div>
 
     <template id="player-template">
         <div class="player-info">
@@ -36,9 +35,21 @@
         </div>
     </template>
     
-    <div class="formulas-panel">
-    <a href="players_list_by_two_hardests.html">По среднему топа 2 хардестов</a>
-
+    <div id="main-div">
+        <div id="templates-container"></div>
+        
+        <div class="formulas-panel">
+            <div class="formulas-links">
+                <a href="players_list_by_two_hardests.html">По среднему топа 2 хардестов   </a>
+                <p>  |  </p>
+                <a href="players_list_by_score_10_percent_formula.html">По очкам (формула 1)</a>
+            </div>
+            <div class="formulas-desks">
+                <p>Формулы: </p>
+                <p>По среднему топа 2 хардестов: (позиция_первого_хардеста + позиция_второго_хардества) / 2</p>
+                <p>По очкам (формула 1): Очки_за_лвл = 100.000 * 0.9^(Позиция_лвла - 1)</p>
+            </div>
+        </div>
     </div>
 
 
