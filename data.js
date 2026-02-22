@@ -128,7 +128,7 @@ const players = [
       "Insaction", "DoraDura", "Azurite", "Cat Planet", "Infinite Circles v2", 
       "Plasma Pulse x2", "Gunslinga Corridor", "Spectral Tentation", "My Song", 
       "Ablaze", "Quest For Perfection", "Leyak", "Supersonic", "Plasma Pulse", 
-      "Pyromaniac"
+      "Pyromaniac", "Mind Control", "Blade of Justice", "Crowd Control"
     ],
     "completed": [
       "Infernal Abyss", "Carcano", "Hyper Paradox", "BloodBath", "HyperSonic", 
